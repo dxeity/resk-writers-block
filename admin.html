@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>R.E.S.K — Admin</title>
 
-  <style>
+ <style>
     * { box-sizing: border-box; }
 
     body {
@@ -91,7 +91,48 @@
       color: #aaa;
     }
 
-    .hidden {
+    select {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  border: 1px solid #555;
+  background: #1b1b1b;
+  color: white;
+  font: inherit;
+}
+
+.post {
+  background: #191919;
+  border: 1px solid #333;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.post-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.post-text {
+  white-space: pre-wrap;
+  margin-bottom: 15px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.post-actions button {
+  margin-top: 0;
+}.hidden {
       display: none;
     }
   </style>
@@ -123,7 +164,59 @@
     <h2>Q&A Inbox</h2>
     <div id="questions"></div>
   </section>
+<section id="postsDashboard" class="hidden">
+  <h2>New / Events — Posts</h2>
 
+  <div class="top">
+    <h3>Create Post</h3>
+
+    <label>Type</label>
+    <select id="postType">
+      <option value="news">NEWS</option>
+      <option value="music">MUSIC</option>
+      <option value="event">EVENT</option>
+      <option value="signal">SIGNAL</option>
+    </select>
+
+    <label>Title</label>
+    <input
+      id="postTitle"
+      type="text"
+      placeholder="Post title"
+    >
+
+    <label>Text</label>
+    <textarea
+      id="postText"
+      placeholder="Write the post..."
+    ></textarea>
+
+    <label>Date Label</label>
+    <input
+      id="postDate"
+      type="text"
+      placeholder="OCTOBER 2026"
+    >
+
+    <label>Post Number</label>
+    <input
+      id="postNumber"
+      type="text"
+      placeholder="0048"
+    >
+
+    <label>Status</label>
+    <select id="postStatus">
+      <option value="draft">DRAFT</option>
+      <option value="published">PUBLISHED</option>
+    </select>
+
+    <button onclick="createPost()">CREATE POST</button>
+  </div>
+
+  <h3>Existing Posts</h3>
+  <div id="posts"></div>
+</section>
 </main>
 
 <script>
@@ -140,7 +233,11 @@ async function login() {
     return;
   }
 
-  await loadQuestions();
+ await loadQuestions();
+await loadPosts();
+
+document.getElementById("postsDashboard")
+  .classList.remove("hidden");
 }
 
 async function loadQuestions() {
@@ -263,7 +360,185 @@ async function publishAnswer(id, answer) {
     alert("Could not connect to the server.");
   }
 }
-</script>
+// ==================================
+// POSTS ADMIN
+// ==================================
+
+async function loadPosts() {
+  const postsBox = document.getElementById("posts");
+
+  try {
+    const response = await fetch(
+      API + "/api/admin/posts",
+      {
+        headers: {
+          "Authorization": "Bearer " + adminToken
+        }
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      postsBox.innerHTML =
+        "<p>Could not load posts.</p>";
+      return;
+    }
+
+    postsBox.innerHTML = "";
+
+    if (!data.posts || data.posts.length === 0) {
+      postsBox.innerHTML =
+        "<p>No posts yet.</p>";
+      return;
+    }
+
+    data.posts.forEach(post => {
+      const card = document.createElement("div");
+      card.className = "post";
+
+      const title = document.createElement("div");
+      title.className = "post-title";
+      title.textContent = post.title;
+
+      const meta = document.createElement("div");
+      meta.className = "post-meta";
+      meta.textContent =
+        post.type.toUpperCase() +
+        " • " +
+        post.status.toUpperCase() +
+        " • " +
+        post.date_label +
+        " • #" +
+        post.post_number;
+
+      const text = document.createElement("div");
+      text.className = "post-text";
+      text.textContent = post.text;
+
+      const actions = document.createElement("div");
+      actions.className = "post-actions";
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "DELETE";
+
+      deleteButton.onclick = () =>
+        deletePost(post.id);
+
+      actions.appendChild(deleteButton);
+
+      card.appendChild(title);
+      card.appendChild(meta);
+      card.appendChild(text);
+      card.appendChild(actions);
+
+      postsBox.appendChild(card);
+    });
+
+  } catch (error) {
+    postsBox.innerHTML =
+      "<p>Could not connect to the server.</p>";
+  }
+}
+
+
+async function createPost() {
+  const type =
+    document.getElementById("postType").value;
+
+  const title =
+    document.getElementById("postTitle").value.trim();
+
+  const text =
+    document.getElementById("postText").value.trim();
+
+  const dateLabel =
+    document.getElementById("postDate").value.trim();
+
+  const postNumber =
+    document.getElementById("postNumber").value.trim();
+
+  const status =
+    document.getElementById("postStatus").value;
+
+  if (!title || !text || !dateLabel || !postNumber) {
+    alert("Fill out all post fields first.");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      API + "/api/admin/posts",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + adminToken
+        },
+        body: JSON.stringify({
+          type: type,
+          title: title,
+          text: text,
+          date_label: dateLabel,
+          post_number: postNumber,
+          status: status
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.error || "Could not create post.");
+      return;
+    }
+
+    alert("Post created!");
+
+    document.getElementById("postTitle").value = "";
+    document.getElementById("postText").value = "";
+    document.getElementById("postDate").value = "";
+    document.getElementById("postNumber").value = "";
+
+    await loadPosts();
+
+  } catch (error) {
+    alert("Could not connect to the server.");
+  }
+}
+
+
+async function deletePost(id) {
+  if (!confirm("Delete this post?")) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      API + "/api/admin/posts/" + id,
+      {
+        method: "DELETE",
+        headers: {
+          "Authorization": "Bearer " + adminToken
+        }
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.error || "Could not delete post.");
+      return;
+    }
+
+    alert("Post deleted.");
+
+    await loadPosts();
+
+  } catch (error) {
+    alert("Could not connect to the server.");
+  }
+}</script>
 
 </body>
 </html>
