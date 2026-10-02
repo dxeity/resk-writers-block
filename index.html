@@ -29,6 +29,6 @@ let wi=0;
 setInterval(()=>{
  const e=document.getElementById("mindWord"); if(!e)return;
  e.style.opacity="0";e.style.transform="translateY(-7px)";
- setTimeout(()=>{wi=(wi+1)%words.length;e.textContent=words[wi];e.style.opacity="1";e.style.transform="translateY(0)"},220);
+ setTimeout(()=>{wi=(wi+1)%words.length;e.textContent=words[wi];e.style.opacity="1";e.style.transform="translateY(0)"if(words[wi]==="Symbol"){e.style.cursor="pointer";e.onclick=()=>document.body.classList.add("egg47")}else{e.style.cursor="default";e.onclick=null}},220);
 },1700);
 </script></body></html>
