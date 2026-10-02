@@ -20,7 +20,29 @@ nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:1fr 1.5f
 .qa-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;z-index:1}.question{border-top:4px solid var(--m);padding-top:18px;margin-bottom:30px}.question .q{font:30px/.95 Anton;text-transform:uppercase}.question .a{font-size:11px;line-height:1.8;margin-top:12px}form{display:grid;gap:10px;position:sticky;top:90px}input,textarea,button{font:inherit;border:2px solid var(--dark);background:transparent;color:var(--dark);padding:14px}textarea{height:170px;resize:vertical}button{background:var(--m);color:var(--light);cursor:pointer;text-transform:uppercase;letter-spacing:.12em}button:hover{background:var(--dark)}
 footer{background:var(--dark);color:var(--g);padding:28px 6vw;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
 @media(max-width:750px){nav{grid-template-columns:1fr repeat(3,1fr)}nav .brand{grid-column:1/-1;border-right:0;border-bottom:1px solid #777}.hero{min-height:90vh}.logo{font-size:24vw}.hero:after{width:80vw;height:80vw}.page{padding:60px 5vw}.newsgrid{grid-template-columns:1fr}.news:first-child{grid-row:auto;min-height:300px}.album,.qa-wrap{grid-template-columns:1fr;gap:30px}.album h2{font-size:55px}form{position:static}.meta{font-size:7px}.meta span:last-child{display:none}footer{flex-direction:column;gap:12px}}
-</style></head><body><div class="ticker"><span>R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • </span></div><header class="hero"><a href="47.html"
+body.egg47::after{
+  content:"47";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111;
+  color:#d8d6cf;
+  font-family:Arial Black,sans-serif;
+  font-size:clamp(180px,45vw,600px);
+  font-weight:900;
+  letter-spacing:-.08em;
+  animation:egg47 .9s ease forwards;
+  pointer-events:none;
+}
+
+@keyframes egg47{
+  0%{opacity:0;transform:scale(.5) rotate(-8deg)}
+  20%{opacity:1;transform:scale(1.08) rotate(2deg)}
+  100%{opacity:0;transform:scale(1.2) rotate(0)}
+}</style></head><body><div class="ticker"><span>R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • </span></div><header class="hero"><a href="47.html"
    aria-label="47"
    style="position:absolute;left:0;top:0;width:45px;height:45px;z-index:10;opacity:0;cursor:default;">
 </a><div class="meta"><span>R.E.S.K / WRITERS BLOCK</span><span>NO LABEL / NO TEMPLATE</span></div><div class="graffiti g1">STYLE ≠ IMAGE</div><div class="graffiti g2">47 → →</div><div class="graffiti g3">WRITE / MAKE / LIVE</div><div class="corner">R.E.S.K // 001 // 47</div><div class="hero-center"><div class="logo">R<span>.</span>E<span>.</span>S<span class="b">.</span>K</div><div class="writers">Writers Block</div><div class="my-mind">Regular Everyday <b id="mindWord">Style</b> Kids</div><div class="statement">A place for the records, the art, the shows, the questions, and everything between them. R.E.S.K is the signature. Style is the language.</div></div><div class="hero-bottom"><div class="scroll">↓ Enter the archive</div><div class="mark">47 / R.E.S.K</div></div></header><nav><a class="brand" href="index.html">R.E.S.K</a><a href="index.html">HOME</a><a href="new.html">NEW / EVENTS</a><a href="music.html">DISCOGRAPHY</a><a href="qa.html">Q&amp;A</a></nav><main class="page light"><div class="heading"><h1>R.E.S.K</h1><div class="num">WRITERS BLOCK / HOME</div></div><div style="position:relative;z-index:1;max-width:720px;font-size:12px;line-height:2">Three doors. One archive. Music, movement, questions and whatever else belongs in the world of R.E.S.K.</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:50px;position:relative;z-index:1"><a class="news" href="new.html"><div class="tag">01</div><h2>NEW</h2><p>Updates / events / Easter eggs.</p></a><a class="news" href="music.html"><div class="tag">02</div><h2>MUSIC</h2><p>The records. Free to download.</p></a><a class="news" href="qa.html"><div class="tag">03</div><h2>Q&amp;A</h2><p>Ask R.E.S.K.</p></a></div></main><footer><span>R.E.S.K — WRITERS BLOCK</span><span>STYLE / ART / MUSIC / 47</span></footer><script>
