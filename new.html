@@ -1,31 +1,617 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>R.E.S.K — New / Events</title>
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&display=swap');
-:root{--m:#651322;--m2:#8d2739;--g:#a9a9a4;--dark:#111;--light:#d2d0c9;--silver:#d8d8d4}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--g);color:var(--dark);font-family:"DM Mono",monospace;overflow-x:hidden}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-a{color:inherit;text-decoration:none}.ticker{height:29px;background:var(--m);color:var(--light);display:flex;align-items:center;overflow:hidden;white-space:nowrap;font-size:9px;letter-spacing:.2em}.ticker span{animation:tick 25s linear infinite}@keyframes tick{to{transform:translateX(-50%)}}
-nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:1fr 1.5fr repeat(3,1fr);background:rgba(210,208,201,.96);border-bottom:2px solid var(--dark);backdrop-filter:blur(8px)}nav a{padding:16px 8px;text-align:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border-right:1px solid #777;transition:.2s}nav a:hover,.active{background:var(--m);color:var(--light)}nav .brand{font-family:Anton;font-size:21px;letter-spacing:-.02em;color:var(--m);border-right:2px solid var(--dark)}
-.hero{min-height:calc(100vh - 29px);background:var(--dark);color:var(--g);position:relative;padding:18px 5vw 28px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.hero:before{content:"";position:absolute;width:75vw;height:75vw;right:-34vw;top:-25vw;border:2px solid var(--m);border-radius:50%;box-shadow:0 0 0 23px transparent,0 0 0 25px var(--m),0 0 0 49px transparent,0 0 0 51px #3b2026,0 0 0 77px transparent,0 0 0 79px var(--m);animation:orbit 22s linear infinite}
-.hero:after{content:"";position:absolute;width:55vw;height:55vw;left:-30vw;bottom:-30vw;border:1px solid #555;transform:rotate(24deg);box-shadow:0 0 0 28px #252525,0 0 0 30px #555;animation:drift 18s ease-in-out infinite alternate}
-@keyframes orbit{to{transform:rotate(360deg)}}@keyframes drift{to{transform:rotate(44deg) scale(1.08)}}
-.meta{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.16em;z-index:2}.hero-center{z-index:2;margin:auto 0}.logo{font:clamp(7rem,22vw,19rem)/.72 Anton,sans-serif;letter-spacing:-.075em;color:var(--g);text-shadow:8px 8px 0 var(--m)}.logo b{color:var(--m);font-weight:normal}.writers{font-size:clamp(.8rem,2vw,1.2rem);letter-spacing:.5em;text-transform:uppercase;margin:34px 0 0 7px;color:var(--light)}
-.my-mind{margin:14px 0 0 7px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}.my-mind:before{content:"MY MIND / ";color:var(--m)}#mindWord{color:var(--silver);font-weight:500;text-shadow:0 0 8px rgba(255,255,255,.3);transition:opacity .25s,transform .25s}
-.statement{max-width:590px;margin-top:28px;font-size:11px;line-height:1.8;color:#858580}.hero-bottom{display:flex;justify-content:space-between;align-items:end;z-index:2}.scroll{border:1px solid #555;padding:10px 14px;font-size:9px;letter-spacing:.15em;text-transform:uppercase}.mark{color:var(--m);font-size:12px;letter-spacing:.15em}
-.graffiti{position:absolute;pointer-events:none;color:var(--m);font-size:10px;letter-spacing:.12em;opacity:.55;z-index:2}.g1{top:39%;left:2%;transform:rotate(-7deg)}.g2{top:62%;right:2%;transform:rotate(8deg)}.g3{bottom:15%;left:14%;font-size:9px}.corner{position:absolute;right:3vw;top:15px;color:var(--m);font-size:8px;letter-spacing:.15em;z-index:3}
-.page{min-height:calc(100vh - 87px);padding:75px 6vw;position:relative;overflow:hidden}.page.light{background:var(--light)}.page.grey{background:var(--g)}.page:before{content:"";position:absolute;width:42vw;height:42vw;right:-20vw;top:18vh;border:1px solid #666;transform:rotate(35deg);box-shadow:0 0 0 22px transparent,0 0 0 23px #777;opacity:.4;animation:slowspin 30s linear infinite}@keyframes slowspin{to{transform:rotate(395deg)}}
-.heading{display:flex;justify-content:space-between;align-items:end;border-bottom:5px solid var(--dark);padding-bottom:9px;margin-bottom:40px;position:relative;z-index:1}h1{font:clamp(4rem,12vw,10rem)/.75 Anton;margin:0;letter-spacing:-.04em;text-transform:uppercase}.num{font-size:9px;color:var(--m);letter-spacing:.16em}
-.newsgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:2px;background:var(--dark);border:2px solid var(--dark);position:relative;z-index:1}.news{background:var(--light);padding:28px;min-height:240px;transition:.25s;position:relative;overflow:hidden}.news:hover{background:var(--m);color:var(--light)}.news:first-child{grid-row:span 2;min-height:485px}.news:before{content:"R";position:absolute;right:-15px;bottom:-45px;font:180px/.8 Anton;color:rgba(101,19,34,.1)}.news:hover:before{color:rgba(255,255,255,.08)}.tag{font-size:9px;letter-spacing:.15em;color:var(--m);text-transform:uppercase}.news:hover .tag{color:var(--g)}.news h2{font:38px/.9 Anton;margin:20px 0 14px;text-transform:uppercase;max-width:600px}.news p{font-size:11px;line-height:1.7;max-width:620px}.arrow{position:absolute;right:25px;top:25px;font-size:25px}
-.album{display:grid;grid-template-columns:42% 1fr;gap:50px;align-items:start;position:relative;z-index:1}.art{aspect-ratio:1;background:var(--m);position:relative;overflow:hidden;border:3px solid var(--dark);box-shadow:14px 14px 0 var(--dark)}.art:before{content:"";position:absolute;width:80%;height:80%;left:10%;top:10%;border:2px solid var(--g);transform:rotate(17deg);box-shadow:0 0 0 18px transparent,0 0 0 19px var(--g)}.art:after{content:"R.E.S.K";position:absolute;inset:0;display:grid;place-items:center;color:var(--g);font:clamp(3rem,8vw,7rem) Anton;transform:rotate(-17deg)}.album h2{font:70px/.8 Anton;margin:0 0 18px;text-transform:uppercase}.year{font-size:10px;color:var(--m);letter-spacing:.15em}.tracks{border-top:2px solid var(--dark);margin-top:25px}.track{display:flex;justify-content:space-between;border-bottom:1px solid #777;padding:10px 0;font-size:11px}.btn{display:inline-block;background:var(--dark);color:var(--g);padding:14px 17px;margin-top:25px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:.2s}.btn:hover{background:var(--m);transform:translate(4px,-4px)}
-.qa-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;z-index:1}.question{border-top:4px solid var(--m);padding-top:18px;margin-bottom:30px}.question .q{font:30px/.95 Anton;text-transform:uppercase}.question .a{font-size:11px;line-height:1.8;margin-top:12px}form{display:grid;gap:10px;position:sticky;top:90px}input,textarea,button{font:inherit;border:2px solid var(--dark);background:transparent;color:var(--dark);padding:14px}textarea{height:170px;resize:vertical}button{background:var(--m);color:var(--light);cursor:pointer;text-transform:uppercase;letter-spacing:.12em}button:hover{background:var(--dark)}
-footer{background:var(--dark);color:var(--g);padding:28px 6vw;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
-@media(max-width:750px){nav{grid-template-columns:1fr repeat(3,1fr)}nav .brand{grid-column:1/-1;border-right:0;border-bottom:1px solid #777}.hero{min-height:90vh}.logo{font-size:24vw}.hero:after{width:80vw;height:80vw}.page{padding:60px 5vw}.newsgrid{grid-template-columns:1fr}.news:first-child{grid-row:auto;min-height:300px}.album,.qa-wrap{grid-template-columns:1fr;gap:30px}.album h2{font-size:55px}form{position:static}.meta{font-size:7px}.meta span:last-child{display:none}footer{flex-direction:column;gap:12px}}
-</style></head><body><div class="ticker"><span>R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • R.E.S.K • WRITERS BLOCK • STYLE • ART • MUSIC • 47 • </span></div><nav><a class="brand" href="index.html">R.E.S.K</a><a href="index.html">HOME</a><a href="new.html">NEW / EVENTS</a><a href="music.html">DISCOGRAPHY</a><a href="qa.html">Q&amp;A</a></nav><main class="page light" id="new"><div class="heading"><h1>New</h1><div class="num">01 / LIVE FEED</div></div><div class="newsgrid"><article class="news"><div class="tag">Latest / 001</div><div class="arrow">↗</div><h2>Writers Block Begins</h2><p>This page becomes the running record: releases, performances, ideas, photographs, Easter eggs, fragments and whatever deserves to stay.</p></article><article class="news"><div class="tag">Events</div><h2>Show Archive</h2><p>Dates, flyers, locations and moments from the stage.</p></article><article class="news"><div class="tag">47 / Hidden</div><h2>Find Something</h2><p>Not every part of the site has to explain itself.</p></article></div></main><footer><span>R.E.S.K — WRITERS BLOCK</span><span>01 / NEW</span></footer><script>
-const words=["Style","Stoic","School","Skill","Spirit","Sound","Story","Self","Symbol","Soul"];
-let wi=0;
-setInterval(()=>{
- const e=document.getElementById("mindWord"); if(!e)return;
- e.style.opacity="0";e.style.transform="translateY(-7px)";
- setTimeout(()=>{wi=(wi+1)%words.length;e.textContent=words[wi];e.style.opacity="1";e.style.transform="translateY(0)"},220);
-},1700);
-</script></body></html>
+
+:root{
+  --maroon:#651322;
+  --red:#8d2739;
+  --grey:#aaa9a3;
+  --light:#d7d5ce;
+  --black:#111;
+  --white:#e8e7e1;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:var(--grey);
+  color:var(--black);
+  font-family:"DM Mono",monospace;
+  overflow-x:hidden;
+}
+
+/* GRAIN */
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* TOP TICKER */
+.ticker{
+  height:29px;
+  background:var(--maroon);
+  color:var(--light);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  white-space:nowrap;
+  font-size:9px;
+  letter-spacing:.2em;
+}
+
+.ticker span{
+  animation:ticker 28s linear infinite;
+}
+
+@keyframes ticker{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:grid;
+  grid-template-columns:1fr 1.5fr repeat(3,1fr);
+  background:rgba(215,213,206,.96);
+  border-bottom:2px solid var(--black);
+  backdrop-filter:blur(8px);
+}
+
+nav a{
+  padding:16px 8px;
+  text-align:center;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border-right:1px solid #777;
+  transition:.2s;
+}
+
+nav a:hover,
+nav .active{
+  background:var(--maroon);
+  color:var(--light);
+}
+
+nav .brand{
+  font-family:Anton;
+  font-size:21px;
+  letter-spacing:-.02em;
+  color:var(--maroon);
+  border-right:2px solid var(--black);
+}
+
+/* MAIN */
+main{
+  min-height:calc(100vh - 87px);
+  padding:70px 6vw 100px;
+  position:relative;
+  overflow:hidden;
+}
+
+main:before{
+  content:"47";
+  position:absolute;
+  right:-40px;
+  top:80px;
+  font:300px/.7 Anton;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(17,17,17,.13);
+  transform:rotate(12deg);
+  pointer-events:none;
+}
+
+main:after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:-260px;
+  bottom:-200px;
+  border:1px solid #555;
+  transform:rotate(35deg);
+  box-shadow:0 0 0 22px transparent,
+             0 0 0 23px #777;
+  opacity:.35;
+  animation:spin 35s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(395deg)}
+}
+
+/* HEADER */
+.heading{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  border-bottom:5px solid var(--black);
+  padding-bottom:10px;
+  margin-bottom:45px;
+}
+
+h1{
+  margin:0;
+  font:clamp(4rem,12vw,10rem)/.75 Anton;
+  letter-spacing:-.05em;
+}
+
+.heading-meta{
+  font-size:9px;
+  letter-spacing:.18em;
+  color:var(--maroon);
+}
+
+/* INTRO */
+.intro{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+  margin-bottom:65px;
+}
+
+.intro-label{
+  font-size:9px;
+  color:var(--maroon);
+  letter-spacing:.2em;
+  margin-bottom:12px;
+}
+
+.intro h2{
+  margin:0;
+  font:48px/.9 Anton;
+  text-transform:uppercase;
+}
+
+.intro p{
+  font-size:11px;
+  line-height:1.9;
+  max-width:650px;
+}
+
+/* FILTERS */
+.filters{
+  position:relative;
+  z-index:2;
+  display:flex;
+  gap:8px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  border:1px solid var(--black);
+  background:transparent;
+  padding:9px 14px;
+  font:9px "DM Mono",monospace;
+  letter-spacing:.12em;
+  cursor:pointer;
+}
+
+.filter:hover,
+.filter.active{
+  background:var(--maroon);
+  color:var(--light);
+}
+
+/* FEED */
+.feed{
+  position:relative;
+  z-index:2;
+  max-width:1050px;
+}
+
+.post{
+  display:grid;
+  grid-template-columns:150px 1fr 100px;
+  border-top:2px solid var(--black);
+  padding:25px 0;
+  transition:.25s;
+}
+
+.post:last-child{
+  border-bottom:2px solid var(--black);
+}
+
+.post:hover{
+  padding-left:12px;
+  background:rgba(101,19,34,.06);
+}
+
+.post-date{
+  font-size:9px;
+  color:var(--maroon);
+  letter-spacing:.12em;
+}
+
+.post-content{
+  padding-right:30px;
+}
+
+.post-type{
+  font-size:8px;
+  letter-spacing:.18em;
+  color:#666;
+  margin-bottom:8px;
+}
+
+.post-title{
+  font:32px/.95 Anton;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.post-text{
+  font-size:10px;
+  line-height:1.8;
+  max-width:680px;
+}
+
+.post-number{
+  text-align:right;
+  font:38px/.8 Anton;
+  color:transparent;
+  -webkit-text-stroke:1px var(--maroon);
+}
+
+/* EASTER EGG STRIP */
+.signal{
+  position:relative;
+  z-index:2;
+  margin-top:65px;
+  padding:25px;
+  background:var(--black);
+  color:var(--light);
+  overflow:hidden;
+}
+
+.signal:before{
+  content:"47 47 47 47 47 47 47 47 47 47";
+  position:absolute;
+  right:-30px;
+  top:-15px;
+  font:80px Anton;
+  opacity:.08;
+  transform:rotate(-8deg);
+}
+
+.signal-label{
+  color:#c3c1bb;
+  font-size:8px;
+  letter-spacing:.2em;
+}
+
+.signal-text{
+  position:relative;
+  margin-top:10px;
+  font:32px/.95 Anton;
+  text-transform:uppercase;
+}
+
+/* FOOTER */
+footer{
+  background:var(--black);
+  color:var(--grey);
+  padding:28px 6vw;
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+@media(max-width:750px){
+
+  nav{
+    grid-template-columns:1fr repeat(3,1fr);
+  }
+
+  nav .brand{
+    grid-column:1/-1;
+    border-right:0;
+    border-bottom:1px solid #777;
+  }
+
+  main{
+    padding:55px 5vw 80px;
+  }
+
+  .post{
+    grid-template-columns:1fr 55px;
+  }
+
+  .post-date{
+    grid-column:1/-1;
+    margin-bottom:12px;
+  }
+
+  .post-number{
+    grid-column:2;
+    grid-row:2;
+  }
+
+  .post-content{
+    grid-column:1;
+  }
+
+  .post-title{
+    font-size:27px;
+  }
+
+  .intro h2{
+    font-size:38px;
+  }
+
+  footer{
+    flex-direction:column;
+    gap:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ticker">
+<span>
+R.E.S.K • WRITERS BLOCK • NEW SIGNAL • STYLE • ART • MUSIC • 47 •
+R.E.S.K • WRITERS BLOCK • NEW SIGNAL • STYLE • ART • MUSIC • 47 •
+R.E.S.K • WRITERS BLOCK • NEW SIGNAL • STYLE • ART • MUSIC • 47 •
+</span>
+</div>
+
+<nav>
+<a class="brand" href="index.html">R.E.S.K</a>
+<a href="index.html">HOME</a>
+<a class="active" href="new.html">NEW / EVENTS</a>
+<a href="music.html">DISCOGRAPHY</a>
+<a href="qa.html">Q&A</a>
+</nav>
+
+<main>
+
+<div class="heading">
+<h1>NEW / EVENTS</h1>
+<div class="heading-meta">02 / FIELD NOTES</div>
+</div>
+
+<section class="intro">
+
+<div class="intro-label">TRANSMISSION // R.E.S.K</div>
+
+<h2>
+NEWS FROM<br>
+THE BLOCK.
+</h2>
+
+<p>
+Drops. Events. New work. Strange signals.
+Anything worth knowing gets left here.
+Check back when the block gets loud.
+</p>
+
+</section>
+
+<div class="filters">
+
+<button class="filter active" data-filter="all">ALL</button>
+<button class="filter" data-filter="news">NEWS</button>
+<button class="filter" data-filter="music">MUSIC</button>
+<button class="filter" data-filter="event">EVENTS</button>
+<button class="filter" data-filter="signal">SIGNALS</button>
+
+</div>
+
+<section class="feed">
+
+<article class="post" data-type="news">
+
+<div class="post-date">
+10.01.26
+</div>
+
+<div class="post-content">
+
+<div class="post-type">
+NEWS
+</div>
+
+<div class="post-title">
+R.E.S.K IS LIVE.
+</div>
+
+<div class="post-text">
+The Writers Block has officially opened.
+The site is live. More is coming.
+This is only the beginning.
+</div>
+
+</div>
+
+<div class="post-number">
+001
+</div>
+
+</article>
+
+
+<article class="post" data-type="music">
+
+<div class="post-date">
+COMING SOON
+</div>
+
+<div class="post-content">
+
+<div class="post-type">
+MUSIC
+</div>
+
+<div class="post-title">
+THE FIRST DROP.
+</div>
+
+<div class="post-text">
+New music is being built.
+When it's ready, you'll find it in the Discography.
+No filler. No rush.
+</div>
+
+</div>
+
+<div class="post-number">
+002
+</div>
+
+</article>
+
+
+<article class="post" data-type="event">
+
+<div class="post-date">
+TBA
+</div>
+
+<div class="post-content">
+
+<div class="post-type">
+EVENT
+</div>
+
+<div class="post-title">
+SOMETHING IS COMING.
+</div>
+
+<div class="post-text">
+No date yet.
+No location yet.
+Just know that this space will change when there's somewhere to be.
+</div>
+
+</div>
+
+<div class="post-number">
+003
+</div>
+
+</article>
+
+
+<article class="post" data-type="signal">
+
+<div class="post-date">
+47
+</div>
+
+<div class="post-content">
+
+<div class="post-type">
+SIGNAL
+</div>
+
+<div class="post-title">
+LOOK CLOSER.
+</div>
+
+<div class="post-text">
+Some things on this site are meant to be found.
+Some aren't.
+</div>
+
+</div>
+
+<div class="post-number">
+047
+</div>
+
+</article>
+
+</section>
+
+
+<section class="signal">
+
+<div class="signal-label">
+PRIVATE TRANSMISSION // 0047
+</div>
+
+<div class="signal-text">
+THE BLOCK IS NEVER REALLY QUIET.
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<span>R.E.S.K — WRITERS BLOCK</span>
+<span>02 / NEW + EVENTS</span>
+</footer>
+
+
+<script>
+
+const filters =
+document.querySelectorAll(".filter");
+
+const posts =
+document.querySelectorAll(".post");
+
+filters.forEach(filter => {
+
+  filter.addEventListener("click", () => {
+
+    filters.forEach(f =>
+      f.classList.remove("active")
+    );
+
+    filter.classList.add("active");
+
+    const selected =
+      filter.dataset.filter;
+
+    posts.forEach(post => {
+
+      if(
+        selected === "all" ||
+        post.dataset.type === selected
+      ){
+
+        post.style.display = "grid";
+
+      }else{
+
+        post.style.display = "none";
+
+      }
+
+    });
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
