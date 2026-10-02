@@ -1,1 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<title>47 — R.E.S.K</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#111;
+  color:#d8d6cf;
+  font-family:"DM Mono",monospace;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+body:before{
+  content:"47";
+  position:fixed;
+  inset:-20%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:70vw/.7 Anton;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(216,214,207,.07);
+  transform:rotate(-12deg);
+  animation:drift 25s linear infinite;
+}
+
+@keyframes drift{
+  from{transform:rotate(-12deg) scale(1)}
+  to{transform:rotate(348deg) scale(1.08)}
+}
+
+main{
+  position:relative;
+  z-index:2;
+  width:min(700px,88vw);
+  border-top:4px solid #651322;
+  border-bottom:1px solid #555;
+  padding:35px 0;
+}
+
+.code{
+  color:#8d2739;
+  font-size:9px;
+  letter-spacing:.2em;
+}
+
+h1{
+  margin:20px 0;
+  font:clamp(90px,20vw,170px)/.7 Anton;
+  letter-spacing:-.05em;
+}
+
+p{
+  max-width:560px;
+  font-size:10px;
+  line-height:2;
+  color:#999;
+}
+
+.message{
+  margin-top:35px;
+  padding:18px;
+  border:1px solid #444;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.back{
+  display:inline-block;
+  margin-top:30px;
+  color:#d8d6cf;
+  border:1px solid #777;
+  padding:12px 16px;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.15em;
+  transition:.2s;
+}
+
+.back:hover{
+  background:#651322;
+  border-color:#651322;
+}
+
+.secret{
+  margin-top:35px;
+  font-size:8px;
+  color:#444;
+  letter-spacing:.2em;
+}
+
+</style>
+</head>
+
+<body>
+
+<main>
+
+<div class="code">
+R.E.S.K // WRITERS BLOCK // 0047
+</div>
+
+<h1>47</h1>
+
+<p>
+YOU FOUND SOMETHING THAT WASN'T ANNOUNCED.
+</p>
+
+<div class="message">
+THE BLOCK IS NOT A PLACE.<br>
+IT'S A STATE OF MIND.<br><br>
+KEEP LOOKING.
+</div>
+
+<a class="back" href="index.html">
+← RETURN TO THE BLOCK
+</a>
+
+<div class="secret">
+THERE ARE MORE.
+</div>
+
+</main>
+
+</body>
+</html>
